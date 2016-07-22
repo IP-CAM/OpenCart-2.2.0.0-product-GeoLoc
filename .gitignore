@@ -1,0 +1,48 @@
+# Created by https://www.gitignore.io/api/opencart
+
+### OpenCart ###
+
+config.php
+admin/config.php
+api/v1/config.php
+
+!index.html
+
+# no download dir???
+#   download/
+
+# what is image/data?
+#   image/data/ 
+
+image/cache/
+system/cache/
+system/logs/
+
+# System Cache Files
+system/storage/cache/*
+!system/storage/cache/index.html
+
+# Modification Files
+system/storage/modification/*
+!system/storage/modification/index.html
+
+# Download Files
+system/storage/download/*
+!system/storage/download/index.html
+
+# Upload Files
+system/storage/upload/*
+!system/storage/upload/index.html
+
+# Log Files
+system/storage/logs/*
+!system/storage/logs/index.html
+
+vqmod/mods.cache
+vqmod/checked.cache
+vqmod/vqcache/*
+vqmod/logs/*
+
+.DS_Store
+
+*~
