@@ -121,6 +121,10 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "product_geolocation` SET `product_id` = " .
+            (int) $product_id . ", address = '" . $this->db->escape($data['address']) . "', latitude = '" .
+            (float)$this->db->escape($data['latitude']) . "', longitude = '" . (float)$this->db->escape($data['longitude']) . "'");
+
 		$this->cache->delete('product');
 
 		return $product_id;
@@ -274,6 +278,12 @@ class ModelCatalogProduct extends Model {
 				$this->db->query("INSERT INTO `" . DB_PREFIX . "product_recurring` SET `product_id` = " . (int)$product_id . ", customer_group_id = " . (int)$product_recurring['customer_group_id'] . ", `recurring_id` = " . (int)$product_recurring['recurring_id']);
 			}
 		}
+
+		$this->db->query("UPDATE `" . DB_PREFIX . "product_geolocation` SET address = '" .
+            $this->db->escape($data['address']) .
+            "', latitude = '" . (float)$this->db->escape($data['latitude']) .
+            "', longitude = '" . (float)$this->db->escape($data['longitude']) . "'
+            WHERE product_id = " . (int) $product_id);
 
 		$this->cache->delete('product');
 	}
@@ -603,6 +613,13 @@ class ModelCatalogProduct extends Model {
 
 		return $query->rows;
 	}
+
+	public function getProductGeolocation($product_id) {
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product_geolocation WHERE product_id = '" . (int)$product_id . "'");
+
+		return $query->row;
+	}
+
 
 	public function getTotalProducts($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT p.product_id) AS total FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";

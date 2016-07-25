@@ -592,6 +592,10 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_reward'] = $this->language->get('entry_reward');
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_recurring'] = $this->language->get('entry_recurring');
+		$data['entry_address'] = $this->language->get('entry_address');
+		$data['entry_coordinates'] = $this->language->get('entry_coordinates');
+		$data['entry_latitude'] = $this->language->get('entry_latitude');
+		$data['entry_longitude'] = $this->language->get('entry_longitude');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_sku'] = $this->language->get('help_sku');
@@ -1280,6 +1284,30 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['product_reward'] = array();
 		}
+
+        $geoloc = $this->model_catalog_product->getProductGeolocation($this->request->get['product_id']);
+
+        if (isset($this->request->post['address'])) {
+            $data['address'] = $this->request->post['address'];
+        } elseif (!empty($geoloc)) {
+            $data['address'] = $geoloc['address'];
+        } else {
+            $data['address'] = "";
+        }
+        if (isset($this->request->post['latitude'])) {
+            $data['latitude'] = $this->request->post['latitude'];
+        } elseif (!empty($geoloc)) {
+            $data['latitude'] = $geoloc['latitude'];
+        } else {
+            $data['latitude'] = "";
+        }
+        if (isset($this->request->post['longitude'])) {
+            $data['longitude'] = $this->request->post['longitude'];
+        } elseif (!empty($geoloc)) {
+            $data['longitude'] = $geoloc['longitude'];
+        } else {
+            $data['longitude'] = "";
+        }
 
 		if (isset($this->request->post['product_layout'])) {
 			$data['product_layout'] = $this->request->post['product_layout'];

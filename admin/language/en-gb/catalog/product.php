@@ -81,6 +81,11 @@ $_['entry_reward']           = 'Reward Points';
 $_['entry_layout']           = 'Layout Override';
 $_['entry_recurring']        = 'Recurring Profile';
 
+$_['entry_address']          = 'Address';
+$_['entry_coordinates']      = 'Coordinates';
+$_['entry_latitude']         = 'Latitude';
+$_['entry_longitude']        = 'Longitude';
+
 // Help
 $_['help_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
 $_['help_sku']               = 'Stock Keeping Unit';

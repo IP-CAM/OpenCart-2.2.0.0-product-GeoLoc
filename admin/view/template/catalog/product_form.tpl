@@ -146,6 +146,35 @@
                   <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
                 </div>
               </div>
+
+
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-address"><?php echo $entry_address; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="address" value="<?php echo $address; ?>" placeholder="<?php echo $entry_address; ?>" id="input-address" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row-sm-4" style="line-height: 240px;">&nbsp;
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-coordinates"><?php echo $entry_coordinates; ?></label>
+                <div class="col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <input type="text" name="latitude" value="<?php echo $latitude; ?>" placeholder="<?php echo $entry_latitude; ?>" id="input-latitude" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                      <input type="text" name="longitude" value="<?php echo $longitude; ?>" placeholder="<?php echo $entry_longitude; ?>" id="input-longitude" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?></label>
                 <div class="col-sm-10">
