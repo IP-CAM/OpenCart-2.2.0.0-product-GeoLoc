@@ -393,6 +393,12 @@ class ModelCatalogProduct extends Model {
 		}
 	}
 
+	public function getProductGeolocation($product_id) {
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product_geolocation WHERE product_id = '" . (int)$product_id . "'");
+
+		return $query->row;
+	}
+
 	public function getCategories($product_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'");
 

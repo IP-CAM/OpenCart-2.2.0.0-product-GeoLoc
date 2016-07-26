@@ -244,6 +244,8 @@ class ControllerProductProduct extends Controller {
 			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 			$data['text_loading'] = $this->language->get('text_loading');
 
+			$data['text_address'] = $this->language->get('text_address');
+
 			$data['entry_qty'] = $this->language->get('entry_qty');
 			$data['entry_name'] = $this->language->get('entry_name');
 			$data['entry_review'] = $this->language->get('entry_review');
@@ -465,6 +467,20 @@ class ControllerProductProduct extends Controller {
 			}
 
 			$data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
+
+			$product_geolocation = $this->model_catalog_product->getProductGeolocation($this->request->get['product_id']);
+
+			if ($product_geolocation) {
+				if (isset($product_geolocation['address'])) {
+                    $data['address'] = $product_geolocation['address'];
+                }
+				if (isset($product_geolocation['latitude'])) {
+                    $data['latitude'] = $product_geolocation['latitude'];
+                }
+				if (isset($product_geolocation['longitude'])) {
+                    $data['longitude'] = $product_geolocation['longitude'];
+                }
+			}
 
 			$this->model_catalog_product->updateViewed($this->request->get['product_id']);
 

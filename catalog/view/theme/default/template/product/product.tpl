@@ -133,6 +133,7 @@
             <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
             <?php } ?>
             <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
+            <li><?php echo $text_address; ?> <?php echo $address; ?></li>
           </ul>
           <?php if ($price) { ?>
           <ul class="list-unstyled">
